@@ -9,12 +9,12 @@ def api_url(resource)
 end
 
 puts "Worker started"
-puts "My task_id is #{{@iron_task_id}}"
-puts "Paramters: '#{params}'"
+puts "My task_id is #{@iron_task_id}"
+puts "Parameters: '#{params}'"
 
 saved_incomes = HTTParty.get api_url("incomes")
 saved_incomes.each do |income|
-  incomes_url = api_url("playertotal/#{income['id']}")
+  incomes_url = api_url("incomes/#{income['id']}")
   results =HTTParty.get incomes_url
   puts "Updated: #{income['id']}"
 end
