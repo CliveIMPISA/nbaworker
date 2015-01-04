@@ -14,5 +14,7 @@ puts "Paramters: '#{params}'"
 
 saved_incomes = HTTParty.get api_url("incomes")
 saved_incomes.each do |income|
-  incomes_url = api_url("incomes/#{incomes['id']}")
+  incomes_url = api_url("incomes/#{income['id']}")
+  results =HTTParty.get incomes_url
+  puts "Updated: #{income['id']}"
 end
